@@ -57,9 +57,10 @@ namespace Lab2Task3_8_
         {
             int Switcher = 0;
             char Contin;
+            int End = 0;
             Console.WriteLine("What language do you want to use?");
             Console.WriteLine("\ntype\n1 - France\n2 - Russian\n3 - English\n4 - Polish\n5 - German");
-            while (true)
+            while (End == 0)
             {
                 Switcher = (Console.ReadKey().KeyChar);
                 while (Switcher < '1' || Switcher > '5')
@@ -89,10 +90,23 @@ namespace Lab2Task3_8_
                 }
                 Console.WriteLine("Again? y/n");
                 Contin = Convert.ToChar(Console.ReadKey().KeyChar);
-                while (Contin != 'y' && Contin != 'n')
+                if (Contin == 'n')
                 {
-                    Console.WriteLine("\ny - Yes, n - No");
-                    Contin = Console.ReadKey().KeyChar;
+                    End++;
+
+                }
+                else
+                {
+                    while (Contin != 'y' && Contin != 'n')
+                    {
+
+                        Console.WriteLine("\ny - Yes, n - No");
+                        Contin = Console.ReadKey().KeyChar;
+                        if (Contin == 'n')
+                        {
+                            End++;
+                        }
+                    }
                 }
                 Console.Clear();
                 Console.WriteLine("What language do you want to use?");
